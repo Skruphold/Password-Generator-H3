@@ -17,6 +17,11 @@ function generatePassword() {
   
   uppercaseArray [1]
     var passLength = prompt ("Between 8 and 128 characters, how many would you like?");
+    // condition for pass length returns if less than 8 or more than 128.
+    if (!(passLength >= 8 && passLength <= 128)) {
+      alert("Please enter a value between 8 and 128!!!")
+      generatePassword();
+    } 
     var numerical = confirm ("Would you like your password to include numbers?");
     var upper = confirm ( "Would you like your password to include Upper case letters?");
     var lower = confirm ("Would you like your password to include any lower case letters?");
@@ -24,14 +29,23 @@ function generatePassword() {
 
   // condition for the array
 
-  if (!(passLength >=8 && passLength <=128)) {
-      alert("Please enter a value between 8 and 128!!!");
-  } else {
-    numerical = confirm("Would you like your password to include numbers?");
-    upper = confirm("Would you like your password to include Upper case letters");
-    lower = confirm("Would you like your password to include any lower case letters?");
-    specialChar = confirm("would you like your password to include any special characters?");
-  };  
+  if (numerical){
+    passArray = passArray.concat(numbersArray);
+  }
+
+  if (upper){
+    passArray = passArray.concat(uppercaseArray);
+  }
+
+  if (lower){
+    passArray = passArray.concat(lowercaseArray);
+  }
+
+  if (specialChar){
+    passArray = passArray.concat(specialcharArray);
+  }
+  console.log(passArray)
+
 }
 
 // Write password to the #password input
