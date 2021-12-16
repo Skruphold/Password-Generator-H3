@@ -5,7 +5,7 @@ function generatePassword() {
 
   //Adding a variable array for numbers, special characters, uppercase and lower case characters. 
   var numbersArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9",];
-  var specialcharArray = ["+", "=", "_", "-", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!"];
+  var specialcharArray = ["+", "=", "_", "-", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "`", "~", ",", ".", "/", "?", "<", ">", ";", ":", "'", "[", "]", "{", "}", "|"];
   var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   var uppercaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
@@ -19,7 +19,8 @@ function generatePassword() {
   // condition for pass length returns if less than 8 or more than 128.
   if (!(passLength >= 8 && passLength <= 128)) {
     alert("Please enter a value between 8 and 128!!!")
-    generatePassword();
+    return
+    // generatePassword();
   } 
   var numerical = confirm ("Would you like your password to include numbers?");
   var upper = confirm ( "Would you like your password to include Upper case letters?");
@@ -49,7 +50,7 @@ function generatePassword() {
   for (var i = 0; i < passLength; i++) {
     userArray.push (passArray[Math.floor(Math.random() * passArray.length)]);
   }
-  // return randomly generated password.
+  // return the array as a string for randomly generated password.
   return userArray.join("");
 }
 
