@@ -9,25 +9,24 @@ function generatePassword() {
   var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   var uppercaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-  // blank arrays to concat when I write my conditions for the prompt
+  // blank arrays to concat when I write my conditions for the prompt.
   var passArray = [];
   var userArray = [];
 
   //prompts for the user.
   
-  uppercaseArray [1]
-    var passLength = prompt ("Between 8 and 128 characters, how many would you like?");
-    // condition for pass length returns if less than 8 or more than 128.
-    if (!(passLength >= 8 && passLength <= 128)) {
-      alert("Please enter a value between 8 and 128!!!")
-      generatePassword();
-    } 
-    var numerical = confirm ("Would you like your password to include numbers?");
-    var upper = confirm ( "Would you like your password to include Upper case letters?");
-    var lower = confirm ("Would you like your password to include any lower case letters?");
-    var specialChar = confirm ("would you like your password to include any special characters?");
+  var passLength = prompt ("Between 8 and 128 characters, how many would you like?");
+  // condition for pass length returns if less than 8 or more than 128.
+  if (!(passLength >= 8 && passLength <= 128)) {
+    alert("Please enter a value between 8 and 128!!!")
+    generatePassword();
+  } 
+  var numerical = confirm ("Would you like your password to include numbers?");
+  var upper = confirm ( "Would you like your password to include Upper case letters?");
+  var lower = confirm ("Would you like your password to include any lower case letters?");
+  var specialChar = confirm ("would you like your password to include any special characters?");
 
-  // condition for the array
+  // condition for the array.
 
   if (numerical){
     passArray = passArray.concat(numbersArray);
@@ -46,9 +45,15 @@ function generatePassword() {
   }
   console.log(passArray)
 
+  // for loop to randomly generate password.
+  for (var i = 0; i < passLength; i++) {
+    userArray.push (passArray[Math.floor(Math.random() * passArray.length)]);
+  }
+  // return randomly generated password.
+  return userArray.join("");
 }
 
-// Write password to the #password input
+// Write password to the #password input.
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -57,5 +62,5 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
+// Add event listener to generate button.
 generateBtn.addEventListener("click", writePassword);
